@@ -6,7 +6,7 @@ This app was created with Bootify.io - tips on working with the code [can be fou
 
 When starting the application `docker compose up` is called and the app will connect to the contained services. [Docker](https://www.docker.com/get-started/) must be available on the current system.
 
-During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be added in the VM options of the Run Configuration after enabling this property in "Modify options". Create your own `application-local.yml` file to override settings for development. For this multi-module project you have to select the highest module `web` as the classpath.
+During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be added in the VM options of the Run Configuration after enabling this property in "Modify options". Create your own `application-local.yml` file to override settings for development. For this multi-module project you have to select the highest module `sathishaidashboard-web` as the classpath.
 
 Lombok must be supported by your IDE. For IntelliJ install the Lombok plugin and enable annotation processing - [learn more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
 
@@ -41,7 +41,7 @@ Node.js is automatically downloaded using the `frontend-maven-plugin` and the fi
 Start your application with the following command - here with the profile `production`:
 
 ```
-java -Dspring.profiles.active=production -jar ./web/target/web-0.0.1-SNAPSHOT.jar
+java -Dspring.profiles.active=production -jar ./sathishaidashboard-web/target/sathishaidashboard-web-0.0.1-SNAPSHOT.jar
 ```
 
 If required, a Docker image can be created with the Spring Boot plugin. Add `SPRING_PROFILES_ACTIVE=production` as environment variable when running the container.

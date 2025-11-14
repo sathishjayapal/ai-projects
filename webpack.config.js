@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
     bundle: 'ts/app.ts'
   },
   output: {
-    path: path.resolve(__dirname, './web/target/classes/static'),
+    path: path.resolve(__dirname, './sathishaidashboard-web/target/classes/static'),
     filename: 'js/[name].js'
   },
   devtool: argv.mode === 'production' ? false : 'eval-source-map',

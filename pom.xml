@@ -20,32 +20,32 @@
     </properties>
 
     <modules>
-        <module>base</module>
-        <module>sathishaiquery</module>
-        <module>sathishragdashboard</module>
-        <module>web</module>
+        <module>sathishaidashboard-base</module>
+        <module>sathishaidashboard-sathishaiquery</module>
+        <module>sathishaidashboard-ragfiledata</module>
+        <module>sathishaidashboard-web</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>base</artifactId>
+                <artifactId>sathishaidashboard-base</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishaiquery</artifactId>
+                <artifactId>sathishaidashboard-sathishaiquery</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishragdashboard</artifactId>
+                <artifactId>sathishaidashboard-ragfiledata</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>web</artifactId>
+                <artifactId>sathishaidashboard-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
