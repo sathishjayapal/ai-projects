@@ -13,10 +13,10 @@
     "resolveJsonModule": true,
     "paths": {
       "*": [
-        "sathishaidashboard-base/src/main/resources/*",
-        "sathishaidashboard-sathishaiquery/src/main/resources/*",
-        "sathishaidashboard-ragfiledata/src/main/resources/*",
-        "sathishaidashboard-web/src/main/resources/*"
+        "ai-project-base/src/main/resources/*",
+        "ai-project-sathishaiquery/src/main/resources/*",
+        "ai-project-ragfiledata/src/main/resources/*",
+        "ai-project-web/src/main/resources/*"
       ]
     },
     "sourceMap": true,

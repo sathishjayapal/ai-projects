@@ -9,9 +9,9 @@
         <relativePath /><!-- lookup parent from repository -->
     </parent>
     <groupId>me.sathish</groupId>
-    <artifactId>sathishaidashboard</artifactId>
+    <artifactId>ai-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sathishaidashboard</name>
+    <name>ai-project</name>
 
     <packaging>pom</packaging>
 
@@ -20,32 +20,32 @@
     </properties>
 
     <modules>
-        <module>sathishaidashboard-base</module>
-        <module>sathishaidashboard-sathishaiquery</module>
-        <module>sathishaidashboard-ragfiledata</module>
-        <module>sathishaidashboard-web</module>
+        <module>ai-project-base</module>
+        <module>ai-project-sathishaiquery</module>
+        <module>ai-project-ragfiledata</module>
+        <module>ai-project-web</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishaidashboard-base</artifactId>
+                <artifactId>ai-project-base</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishaidashboard-sathishaiquery</artifactId>
+                <artifactId>ai-project-sathishaiquery</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishaidashboard-ragfiledata</artifactId>
+                <artifactId>ai-project-ragfiledata</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>sathishaidashboard-web</artifactId>
+                <artifactId>ai-project-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

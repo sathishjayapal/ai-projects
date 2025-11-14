@@ -1,0 +1,37 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_DATABASE_URL:mongodb://localhost:27017/ai-project}
+  messages:
+    basename: messages,messagesSathishaiquery,messagesRagfiledata,messagesWeb
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  docker:
+    compose:
+      lifecycle-management: start-only
+mongock:
+  migration-scan-package: me.sathish.ai_project.base.changelogs
+  transactional: true
+error:
+  handling:
+    http-status-in-json-response: true
+    exception-logging: NO_LOGGING
+    full-stacktrace-http-statuses: 5xx
+    log-levels:
+      5xx: ERROR
+    codes:
+      DocDBDataNameUnique: DOC_DBDATA_NAME_UNIQUE
+      ValidFileType: VALID_FILE_TYPE
+server:
+  tomcat:
+    max-part-count: '100'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always

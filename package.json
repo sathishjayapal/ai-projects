@@ -1,5 +1,5 @@
 {
-  "name": "sathishaidashboard-frontend",
+  "name": "ai-project-frontend",
   "author": "Bootify.io",
   "scripts": {
     "devserver": "webpack serve --open --mode development",
