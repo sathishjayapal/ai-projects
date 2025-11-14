@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "outDir": "./target/classes/static/out-tsc",
+    "removeComments": true,
+    "target": "ES5",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "*": [
+        "base/src/main/resources/*",
+        "sathishaiquery/src/main/resources/*",
+        "sathishragdashboard/src/main/resources/*",
+        "web/src/main/resources/*"
+      ]
+    },
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
+  },
+  "exclude": [
+    "node_modules/**/*",
+    "**/build/**/*",
+    "**/out/**/*"
+  ]
+}
