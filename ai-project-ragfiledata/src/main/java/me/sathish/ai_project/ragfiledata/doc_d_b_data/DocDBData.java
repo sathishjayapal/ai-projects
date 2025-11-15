@@ -7,12 +7,14 @@ import java.time.OffsetDateTime;
 import lombok.Getter;
 import lombok.Setter;
 import me.sathish.ai_project.base.file.FileData;
+import me.sathish.ai_project.base.user_info.UserInfo;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 
 @Document
@@ -30,6 +32,10 @@ public class DocDBData {
 
     @Valid
     private FileData fileName;
+
+    @DocumentReference(lazy = true)
+    @NotNull
+    private UserInfo username;
 
     @CreatedDate
     private OffsetDateTime dateCreated;

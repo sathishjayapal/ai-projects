@@ -1,5 +1,6 @@
 package me.sathish.ai_project.sathishaiquery.config;
 
+import me.sathish.ai_project.base.user_info.UserInfoRepository;
 import me.sathish.ai_project.sathishaiquery.lookup_user_questions.LookupUserQuestions;
 import me.sathish.ai_project.sathishaiquery.lookup_user_questions.LookupUserQuestionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ public class TestDataSathishaiquery {
 
     @Autowired
     public LookupUserQuestionsRepository lookupUserQuestionsRepository;
+
+    @Autowired
+    public UserInfoRepository userInfoRepository;
 
     public void clearAll() {
         lookupUserQuestionsRepository.deleteAll();

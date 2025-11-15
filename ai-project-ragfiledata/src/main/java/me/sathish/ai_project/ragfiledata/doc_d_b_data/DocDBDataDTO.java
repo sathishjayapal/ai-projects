@@ -22,4 +22,7 @@ public class DocDBDataDTO {
     @Valid
     private FileData fileName;
 
+    @NotNull
+    private Long username;
+
 }

@@ -1,5 +1,7 @@
 package me.sathish.ai_project.sathishaiquery.lookup_user_questions;
 
+import me.sathish.ai_project.base.user_info.UserInfo;
+import me.sathish.ai_project.base.user_info.UserInfoRepository;
 import me.sathish.ai_project.base.util.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -11,10 +13,13 @@ import org.springframework.stereotype.Service;
 public class LookupUserQuestionsService {
 
     private final LookupUserQuestionsRepository lookupUserQuestionsRepository;
+    private final UserInfoRepository userInfoRepository;
 
     public LookupUserQuestionsService(
-            final LookupUserQuestionsRepository lookupUserQuestionsRepository) {
+            final LookupUserQuestionsRepository lookupUserQuestionsRepository,
+            final UserInfoRepository userInfoRepository) {
         this.lookupUserQuestionsRepository = lookupUserQuestionsRepository;
+        this.userInfoRepository = userInfoRepository;
     }
 
     public Page<LookupUserQuestionsDTO> findAll(final String filter, final Pageable pageable) {
@@ -66,12 +71,16 @@ public class LookupUserQuestionsService {
             final LookupUserQuestionsDTO lookupUserQuestionsDTO) {
         lookupUserQuestionsDTO.setId(lookupUserQuestions.getId());
         lookupUserQuestionsDTO.setQuestionAsked(lookupUserQuestions.getQuestionAsked());
+        lookupUserQuestionsDTO.setLookupusername(lookupUserQuestions.getLookupusername() == null ? null : lookupUserQuestions.getLookupusername().getUserid());
         return lookupUserQuestionsDTO;
     }
 
     private LookupUserQuestions mapToEntity(final LookupUserQuestionsDTO lookupUserQuestionsDTO,
             final LookupUserQuestions lookupUserQuestions) {
         lookupUserQuestions.setQuestionAsked(lookupUserQuestionsDTO.getQuestionAsked());
+        final UserInfo lookupusername = lookupUserQuestionsDTO.getLookupusername() == null ? null : userInfoRepository.findById(lookupUserQuestionsDTO.getLookupusername())
+                .orElseThrow(() -> new NotFoundException("lookupusername not found"));
+        lookupUserQuestions.setLookupusername(lookupusername);
         return lookupUserQuestions;
     }
 

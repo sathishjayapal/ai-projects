@@ -28,7 +28,7 @@ import org.springframework.web.servlet.HandlerMapping;
 )
 public @interface DocDBDataNameUnique {
 
-    String message() default "{Exists.docDBData.name}";
+    String message() default "{exists.docDBData.name}";
 
     Class<?>[] groups() default {};
 

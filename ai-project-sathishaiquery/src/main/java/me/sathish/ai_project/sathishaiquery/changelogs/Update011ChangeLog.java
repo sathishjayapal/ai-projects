@@ -27,6 +27,7 @@ public class Update011ChangeLog {
                 .properties(
                         JsonSchemaProperty.int64("id"),
                         JsonSchemaProperty.string("questionAsked"),
+                        JsonSchemaProperty.int64("lookupusername"),
                         JsonSchemaProperty.object("dateCreated")
                                 .required("dateTime", "offset"),
                         JsonSchemaProperty.object("lastUpdated")

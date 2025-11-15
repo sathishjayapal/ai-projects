@@ -8,6 +8,7 @@ import lombok.SneakyThrows;
 import me.sathish.ai_project.base.AiProjectApplication;
 import me.sathish.ai_project.base.file.FileContentRepository;
 import me.sathish.ai_project.base.file.FileDataService;
+import me.sathish.ai_project.base.user_info.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,6 +35,11 @@ public abstract class BaseIT {
 
     @ServiceConnection
     private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:8.0.13");
+    public static final String ADMIN = "admin";
+    public static final String USER_QUESTIONS_ROLE = "userQuestionsRole";
+    public static final String RAG_USER_ROLE = "ragUserRole";
+    public static final String ANY = "any";
+    public static final String PASSWORD = "Bootify!";
 
     static {
         mongoDBContainer.withReuse(true)
@@ -45,6 +51,9 @@ public abstract class BaseIT {
 
     @Autowired
     public TestData testData;
+
+    @Autowired
+    public UserInfoRepository userInfoRepository;
 
     @Autowired
     public FileContentRepository fileContentRepository;

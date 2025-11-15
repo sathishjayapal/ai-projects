@@ -22,11 +22,13 @@ The DevServer can be started as follows:
 npm run devserver
 ```
 
-Using a proxy the whole application is now accessible under `localhost:8081`. All changes to the templates and JS/CSS files are immediately visible in the browser.
+Using a proxy the whole application is now accessible under `localhost:3000`. All changes to the templates and JS/CSS files are immediately visible in the browser.
 
 ## Testing requirements
 
 Testcontainers is used for running the integration tests. Due to the reuse flag, the container will not shut down after the tests. It can be stopped manually if needed.
+
+Frontend unit tests can be executed with `npm run test`.
 
 ## Build
 
@@ -55,8 +57,7 @@ mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=me.sathish/ai-p
 * [Maven docs](https://maven.apache.org/guides/index.html)  
 * [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
 * [Spring Data MongoDB reference](https://docs.spring.io/spring-data/mongodb/reference/)
-* [Thymeleaf docs](https://www.thymeleaf.org/documentation.html)  
+* [Learn React](https://react.dev/learn)
 * [Webpack concepts](https://webpack.js.org/concepts/)  
 * [npm docs](https://docs.npmjs.com/)  
 * [Tailwind CSS](https://tailwindcss.com/)  
-* [Learn Spring Boot with Thymeleaf](https://www.wimdeblauwe.com/books/taming-thymeleaf/)  

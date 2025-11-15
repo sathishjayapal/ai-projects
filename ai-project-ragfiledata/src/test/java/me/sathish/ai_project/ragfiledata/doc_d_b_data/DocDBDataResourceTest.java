@@ -30,10 +30,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void getAllDocDBDatas_success() {
+        testData.userInfo();
         testDataRagfiledata.docDBData();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/docDBDatas")
@@ -46,10 +48,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void getAllDocDBDatas_filtered() {
+        testData.userInfo();
         testDataRagfiledata.docDBData();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/docDBDatas?filter=1001")
@@ -61,10 +65,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void getDocDBData_success() {
+        testData.userInfo();
         testDataRagfiledata.docDBData();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/docDBDatas/1000")
@@ -76,8 +82,11 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void getDocDBData_notFound() {
+        testData.userInfo();
+
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/docDBDatas/1666")
@@ -88,9 +97,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void createDocDBData_success() throws Exception {
+        testData.userInfo();
+
         prepareUpload("f4063e27-5d50-3f65-abf1-b02d926f19a4", "testFile.pdf");
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body(readResource("/requests/docDBDataDTORequest.json"))
@@ -106,9 +118,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void createDocDBData_missingField() {
+        testData.userInfo();
+
         prepareUpload("f4063e27-5d50-3f65-abf1-b02d926f19a4", "testFile.pdf");
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body(readResource("/requests/docDBDataDTORequest_missingField.json"))
@@ -123,11 +138,13 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void updateDocDBData_success() {
+        testData.userInfo();
         testDataRagfiledata.docDBData();
 
         prepareUpload("f4063e27-5d50-3f65-abf1-b02d926f19a4", "testFile.pdf");
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body(readResource("/requests/docDBDataDTORequest.json"))
@@ -142,10 +159,12 @@ public class DocDBDataResourceTest extends BaseIT {
 
     @Test
     void deleteDocDBData_success() {
+        testData.userInfo();
         testDataRagfiledata.docDBData();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .delete("/api/docDBDatas/1000")

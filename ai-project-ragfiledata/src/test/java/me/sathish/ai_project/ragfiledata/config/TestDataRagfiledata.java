@@ -1,6 +1,7 @@
 package me.sathish.ai_project.ragfiledata.config;
 
 import me.sathish.ai_project.base.file.FileData;
+import me.sathish.ai_project.base.user_info.UserInfoRepository;
 import me.sathish.ai_project.ragfiledata.doc_d_b_data.DocDBData;
 import me.sathish.ai_project.ragfiledata.doc_d_b_data.DocDBDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class TestDataRagfiledata {
 
     @Autowired
     public DocDBDataRepository docDBDataRepository;
+
+    @Autowired
+    public UserInfoRepository userInfoRepository;
 
     public void clearAll() {
         docDBDataRepository.deleteAll();
@@ -25,6 +29,7 @@ public class TestDataRagfiledata {
         fileName.setUid("a9063e27-5d50-3f65-abf1-b02d926f19a4");
         fileName.setFileName("testFile.pdf");
         docDBData.setFileName(fileName);
+        docDBData.setUsername(userInfoRepository.findAll().getFirst());
         docDBDataRepository.save(docDBData);
         final DocDBData docDBData1 = new DocDBData();
         docDBData1.setId((long)1001);
@@ -33,6 +38,7 @@ public class TestDataRagfiledata {
         fileName1.setUid("b8063e27-5d50-3f65-abf1-b02d926f19a4");
         fileName1.setFileName("testFile.pdf");
         docDBData1.setFileName(fileName1);
+        docDBData1.setUsername(userInfoRepository.findAll().get(1));
         docDBDataRepository.save(docDBData1);
     }
 

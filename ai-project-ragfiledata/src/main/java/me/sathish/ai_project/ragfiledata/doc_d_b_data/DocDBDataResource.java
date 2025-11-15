@@ -1,8 +1,11 @@
 package me.sathish.ai_project.ragfiledata.doc_d_b_data;
 
 import jakarta.validation.Valid;
+import java.util.Map;
 import me.sathish.ai_project.base.file.FileDataService;
 import me.sathish.ai_project.base.model.SimpleValue;
+import me.sathish.ai_project.base.security.UserRoles;
+import me.sathish.ai_project.base.user_info.UserInfoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -13,6 +16,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,20 +30,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/docDBDatas", produces = MediaType.APPLICATION_JSON_VALUE)
+@PreAuthorize("hasAnyAuthority('" + UserRoles.ADMIN + "', '" + UserRoles.RAG_USER_ROLE + "')")
 public class DocDBDataResource {
 
     private final DocDBDataService docDBDataService;
     private final DocDBDataAssembler docDBDataAssembler;
     private final PagedResourcesAssembler<DocDBDataDTO> pagedResourcesAssembler;
+    private final UserInfoService userInfoService;
     private final FileDataService fileDataService;
 
     public DocDBDataResource(final DocDBDataService docDBDataService,
             final DocDBDataAssembler docDBDataAssembler,
             final PagedResourcesAssembler<DocDBDataDTO> pagedResourcesAssembler,
-            final FileDataService fileDataService) {
+            final UserInfoService userInfoService, final FileDataService fileDataService) {
         this.docDBDataService = docDBDataService;
         this.docDBDataAssembler = docDBDataAssembler;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.userInfoService = userInfoService;
         this.fileDataService = fileDataService;
     }
 
@@ -77,6 +84,11 @@ public class DocDBDataResource {
     public ResponseEntity<Void> deleteDocDBData(@PathVariable(name = "id") final Long id) {
         docDBDataService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/usernameValues")
+    public ResponseEntity<Map<Long, String>> getUsernameValues() {
+        return ResponseEntity.ok(userInfoService.getUserInfoValues());
     }
 
     @GetMapping("/{id}/fileName/{filename}")

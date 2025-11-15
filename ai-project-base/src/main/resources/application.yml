@@ -2,8 +2,6 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_DATABASE_URL:mongodb://localhost:27017/ai-project}
-  messages:
-    basename: messages,messagesSathishaiquery,messagesRagfiledata,messagesWeb
   servlet:
     multipart:
       max-file-size: 20MB
@@ -21,6 +19,8 @@ error:
     full-stacktrace-http-statuses: 5xx
     log-levels:
       5xx: ERROR
+    http-statuses:
+      org.springframework.security.authorization.AuthorizationDeniedException: unauthorized
     codes:
       DocDBDataNameUnique: DOC_DBDATA_NAME_UNIQUE
       ValidFileType: VALID_FILE_TYPE

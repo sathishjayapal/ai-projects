@@ -29,10 +29,12 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void getAllLookupUserQuestionss_success() {
+        testData.userInfo();
         testDataSathishaiquery.lookupUserQuestions();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/lookupUserQuestionss")
@@ -45,10 +47,12 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void getAllLookupUserQuestionss_filtered() {
+        testData.userInfo();
         testDataSathishaiquery.lookupUserQuestions();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/lookupUserQuestionss?filter=1101")
@@ -59,11 +63,26 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
     }
 
     @Test
+    void getAllLookupUserQuestionss_unauthorized() {
+        RestAssured
+                .given()
+                    .redirects().follow(false)
+                    .accept(ContentType.JSON)
+                .when()
+                    .get("/api/lookupUserQuestionss")
+                .then()
+                    .statusCode(HttpStatus.UNAUTHORIZED.value())
+                    .body("code", Matchers.equalTo("AUTHORIZATION_DENIED"));
+    }
+
+    @Test
     void getLookupUserQuestions_success() {
+        testData.userInfo();
         testDataSathishaiquery.lookupUserQuestions();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/lookupUserQuestionss/1100")
@@ -75,8 +94,11 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void getLookupUserQuestions_notFound() {
+        testData.userInfo();
+
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .get("/api/lookupUserQuestionss/1766")
@@ -87,8 +109,11 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void createLookupUserQuestions_success() {
+        testData.userInfo();
+
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body(readResource("/requests/lookupUserQuestionsDTORequest.json"))
@@ -101,10 +126,12 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void updateLookupUserQuestions_success() {
+        testData.userInfo();
         testDataSathishaiquery.lookupUserQuestions();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body(readResource("/requests/lookupUserQuestionsDTORequest.json"))
@@ -119,10 +146,12 @@ public class LookupUserQuestionsResourceTest extends BaseIT {
 
     @Test
     void deleteLookupUserQuestions_success() {
+        testData.userInfo();
         testDataSathishaiquery.lookupUserQuestions();
 
         RestAssured
                 .given()
+                    .auth().preemptive().basic(ADMIN, PASSWORD)
                     .accept(ContentType.JSON)
                 .when()
                     .delete("/api/lookupUserQuestionss/1100")

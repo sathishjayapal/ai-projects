@@ -1,6 +1,9 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
@@ -8,13 +11,18 @@ const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 
 module.exports = (env, argv) => ({
   entry: {
-    bundle: 'ts/app.ts'
+    bundle: 'index.tsx'
   },
   output: {
     path: path.resolve(__dirname, './ai-project-web/target/classes/static'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
+    publicPath: '/'
   },
   devtool: argv.mode === 'production' ? false : 'eval-source-map',
+  performance: {
+    maxEntrypointSize: 488000,
+    maxAssetSize: 488000
+  },
   optimization: {
     minimize: true,
     minimizer: [
@@ -25,6 +33,17 @@ module.exports = (env, argv) => ({
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
+    }),
+    new Dotenv({
+      path: argv.mode === 'production' ? '.env' : '.env.development'
+    }),
+    new HtmlWebpackPlugin({
+      template: './ai-project-web/src/main/webapp/index.html'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: './ai-project-web/src/main/webapp/public'
+      }],
     }),
     new WarningsToErrorsPlugin()
   ],
@@ -55,6 +74,10 @@ module.exports = (env, argv) => ({
             }
           }
         ]
+      },
+      {
+        test: /\.(woff2|woff|ttf|png|jpg|jpeg|gif|svg|webp)$/,
+        type: 'asset'
       }
     ]
   },
@@ -63,25 +86,15 @@ module.exports = (env, argv) => ({
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
   devServer: {
-    port: 8081,
+    port: 3000,
     compress: true,
+    historyApiFallback: {
+      disableDotRule: true
+    },
     hot: true,
     static: false,
     watchFiles: [
-      '*/src/main/resources/templates/**/*.html',
-      '*/src/main/resources/ts/**/*.ts',
-      '*/src/main/resources/css/**/*.css'
-    ],
-    proxy: [
-      {
-        context: '**',
-        target: 'http://localhost:8080',
-        secure: false,
-        prependPath: false,
-        headers: {
-          'X-Devserver': '1',
-        }
-      }
+      '*/src/main/webapp/**',
     ]
   }
 });

@@ -6,30 +6,35 @@
     ],
     "outDir": "./target/classes/static/out-tsc",
     "removeComments": true,
-    "target": "ES5",
     "baseUrl": ".",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "jsx": "react",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "module": "ES2022",
     "resolveJsonModule": true,
     "paths": {
       "*": [
-        "ai-project-base/src/main/resources/*",
-        "ai-project-sathishaiquery/src/main/resources/*",
-        "ai-project-ragfiledata/src/main/resources/*",
-        "ai-project-web/src/main/resources/*"
+        "ai-project-base/src/main/webapp/*",
+        "ai-project-sathishaiquery/src/main/webapp/*",
+        "ai-project-ragfiledata/src/main/webapp/*",
+        "ai-project-web/src/main/webapp/*"
       ]
     },
     "sourceMap": true,
     "alwaysStrict": true,
     "allowUnreachableCode": false,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
     "noImplicitAny": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strict": true,
+    "strictNullChecks": true,
+    "typeRoots": ["ai-project-web/src/main/webapp/types", "node_modules/@types"]
   },
   "exclude": [
     "node_modules/**/*",

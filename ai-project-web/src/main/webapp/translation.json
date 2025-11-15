@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Ai Project"
+  },
+  "navigation": {
+    "toggle": "Toggle navigation",
+    "home": "Home",
+    "entities": "Entities"
+  },
+  "home": {
+    "index": {
+      "headline": "Welcome to your new app!",
+      "text": "Your app was created with <a href=\"https://bootify.io\" target=\"_blank\" className=\"underline\">Bootify.io</a> and can now be customized. If you are happy with the result, <strong>please recommend us to other developers</strong> - so Bootify.io can grow further.",
+      "exploreEntities": "Explore your entities"
+    }
+  },
+  "error": {
+    "page": {
+      "headline": "Error",
+      "message": "The page you are looking for is not available right now."
+    }
+  },
+  "lookupUserQuestions": {
+    "list": {
+      "headline": "Lookup User Questionses",
+      "createNew": "Create new Lookup User Questions",
+      "empty": "No Lookup User Questionses could be found.",
+      "sort": {
+        "id,ASC": "Sort by Id (Ascending)",
+        "questionAsked,ASC": "Sort by Question Asked (Ascending)"
+      },
+      "filter": "Filter by Id",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Lookup User Questions",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "questionAsked": {
+      "label": "Question Asked"
+    },
+    "lookupusername": {
+      "label": "Lookupusername"
+    },
+    "edit": {
+      "headline": "Edit Lookup User Questions",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Lookup User Questions was created successfully."
+    },
+    "update": {
+      "success": "Lookup User Questions was updated successfully."
+    },
+    "delete": {
+      "success": "Lookup User Questions was removed successfully."
+    }
+  },
+  "docDBData": {
+    "list": {
+      "headline": "Doc DBDatas",
+      "createNew": "Create new Doc DBData",
+      "empty": "No Doc DBDatas could be found.",
+      "sort": {
+        "id,ASC": "Sort by Id (Ascending)",
+        "name,ASC": "Sort by Name (Ascending)"
+      },
+      "filter": "Filter by Id",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Doc DBData",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "fileName": {
+      "label": "File Name"
+    },
+    "username": {
+      "label": "Username"
+    },
+    "edit": {
+      "headline": "Edit Doc DBData",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Doc DBData was created successfully."
+    },
+    "update": {
+      "success": "Doc DBData was updated successfully."
+    },
+    "delete": {
+      "success": "Doc DBData was removed successfully."
+    }
+  },
+  "exists": {
+    "docDBData": {
+      "name": "This Name is already taken."
+    }
+  },
+  "select": {
+    "empty": {
+      "label": "Please select"
+    }
+  },
+  "file": {
+    "delete": "Delete",
+    "open": "Open"
+  },
+  "VALID_FILE_TYPE": "Please provide a valid file type.",
+  "delete": {
+    "confirm": "Do you really want to delete this element? This cannot be undone."
+  },
+  "operation": {
+    "success": "Your operation was successful."
+  },
+  "required": "Please provide a value.",
+  "maxlength": "Your value must have a length of less then ${max} characters.",
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "elements": "Item {{range}} of {{total}}"
+  },
+  "searchFilter": {
+    "apply": "Apply"
+  }
+}

@@ -1,6 +1,8 @@
 package me.sathish.ai_project.ragfiledata.doc_d_b_data;
 
 import me.sathish.ai_project.base.file.FileDataService;
+import me.sathish.ai_project.base.user_info.UserInfo;
+import me.sathish.ai_project.base.user_info.UserInfoRepository;
 import me.sathish.ai_project.base.util.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -14,11 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class DocDBDataService {
 
     private final DocDBDataRepository docDBDataRepository;
+    private final UserInfoRepository userInfoRepository;
     private final FileDataService fileDataService;
 
     public DocDBDataService(final DocDBDataRepository docDBDataRepository,
-            final FileDataService fileDataService) {
+            final UserInfoRepository userInfoRepository, final FileDataService fileDataService) {
         this.docDBDataRepository = docDBDataRepository;
+        this.userInfoRepository = userInfoRepository;
         this.fileDataService = fileDataService;
     }
 
@@ -74,12 +78,16 @@ public class DocDBDataService {
         docDBDataDTO.setId(docDBData.getId());
         docDBDataDTO.setName(docDBData.getName());
         docDBDataDTO.setFileName(docDBData.getFileName());
+        docDBDataDTO.setUsername(docDBData.getUsername() == null ? null : docDBData.getUsername().getUserid());
         return docDBDataDTO;
     }
 
     private DocDBData mapToEntity(final DocDBDataDTO docDBDataDTO, final DocDBData docDBData) {
         docDBData.setName(docDBDataDTO.getName());
         docDBData.setFileName(docDBDataDTO.getFileName());
+        final UserInfo username = docDBDataDTO.getUsername() == null ? null : userInfoRepository.findById(docDBDataDTO.getUsername())
+                .orElseThrow(() -> new NotFoundException("username not found"));
+        docDBData.setUsername(username);
         return docDBData;
     }
 

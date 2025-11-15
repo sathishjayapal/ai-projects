@@ -14,4 +14,6 @@ public class LookupUserQuestionsDTO {
     @Size(max = 255)
     private String questionAsked;
 
+    private Long lookupusername;
+
 }
